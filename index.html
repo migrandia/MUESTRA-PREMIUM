@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda | Edición Especial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Tenor+Sans&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blanco: #fdfcf9;
+            --negro: #1a1a1a;
+            --dorado: #c5a059;
+        }
+
+        body { margin: 0; background: #e5e5db; font-family: 'Tenor Sans', sans-serif; }
+        .wrapper { max-width: 480px; margin: 0 auto; background: var(--blanco); position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.1); }
+
+        /* REPRODUCTOR DE MÚSICA PREMIUM */
+        #music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--negro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: rgba(255,255,255,0.8);
+        }
+
+        .playing { animation: rotate 4s linear infinite; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* SECCIÓN HERO */
+        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-img { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000');
+            background-size: cover; background-position: center; z-index: 1;
+        }
+        .hero-content { z-index: 2; color: white; text-align: center; text-transform: uppercase; letter-spacing: 5px; }
+
+        /* CONTADOR */
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 40px 0; }
+        .t-num { font-size: 1.5rem; display: block; }
+        .t-lab { font-size: 0.6rem; text-transform: uppercase; opacity: 0.6; }
+
+        section { padding: 80px 40px; text-align: center; }
+        .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.8rem; }
+        .btn { display: inline-block; padding: 18px 40px; background: var(--negro); color: white; text-decoration: none; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 30px; }
+        
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 40px 0; }
+        .g-img { width: 100%; height: 250px; object-fit: cover; }
+    </style>
+</head>
+<body>
+
+    <div id="music-control" onclick="toggleMusic()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    </div>
+    
+    <audio id="bg-audio" loop preload="auto">
+        <source src="https://docs.google.com/uc?export=download&id=1gllCs_V2LXOL5LDhRRIRWeuZv68TEK5R" type="audio/mpeg">
+    </audio>
+
+    <div class="wrapper">
+        <div class="hero">
+            <div class="hero-img"></div>
+            <div class="hero-content">
+                <h1>ANA & CARLOS</h1>
+                <p style="font-size: 0.8rem;">14 . 02 . 2026</p>
+            </div>
+        </div>
+
+        <section>
+            <p class="serif">"Nuestra historia es el viaje más hermoso de nuestras vidas."</p>
+            <div class="gallery">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600" class="g-img">
+                <img src="https://images.unsplash.com/photo-1596193711019-21c61ae33e50?q=80&w=600" class="g-img" style="margin-top: 30px;">
+            </div>
+        </section>
+
+        <section style="background: #f9f8f5;">
+            <p style="letter-spacing: 3px; font-size: 0.7rem;">COMIENZA EN</p>
+            <div class="timer-grid">
+                <div><span class="t-num" id="d">00</span><span class="t-lab">Días</span></div>
+                <div><span class="t-num" id="h">00</span><span class="t-lab">Hrs</span></div>
+                <div><span class="t-num" id="m">00</span><span class="t-lab">Min</span></div>
+                <div><span class="t-num" id="s">00</span><span class="t-lab">Seg</span></div>
+            </div>
+            
+            <div style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 30px 0; margin-top: 40px;">
+                <p class="serif">Sábado 14 de Febrero</p>
+                <p>Catedral de Tunkás, Yucatán</p>
+                <a href="#" class="btn" style="background: none; color: black; border: 1px solid black;">Ver Ubicación</a>
+            </div>
+        </section>
+
+        <section>
+            <p class="serif">¿Nos acompañas?</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;">Favor de confirmar antes del 15 de Enero</p>
+            <a href="https://wa.me/521234567890" class="btn">Confirmar Asistencia</a>
+            
+            <div style="height: 300px; background: url('https://images.unsplash.com/photo-1591604466107-dd9ba6ba1143?q=80&w=800') center/cover; margin-top: 80px;"></div>
+        </section>
+    </div>
+
+    <script>
+        // LÓGICA DE MÚSICA
+        function toggleMusic() {
+            const audio = document.getElementById('bg-audio');
+            const btn = document.getElementById('music-control');
+            if (audio.paused) {
+                audio.play();
+                btn.classList.add('playing');
+            } else {
+                audio.pause();
+                btn.classList.remove('playing');
+            }
+        }
+
+        // LÓGICA DE CONTADOR
+        const target = new Date(2026, 1, 14, 18, 0, 0).getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const dist = target - now;
+            document.getElementById('d').innerHTML = Math.floor(dist / 864e5);
+            document.getElementById('h').innerHTML = Math.floor((dist % 864e5) / 36e5);
+            document.getElementById('m').innerHTML = Math.floor((dist % 36e5) / 6e4);
+            document.getElementById('s').innerHTML = Math.floor((dist % 6e4) / 1000);
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -3,137 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda | Edición Especial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <title>Nuestra Boda | Invitación Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Tenor+Sans&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --blanco: #fdfcf9;
-            --negro: #1a1a1a;
-            --dorado: #c5a059;
+            --crema: #fdfcf9;
+            --dorado: #b8977e;
+            --oscuro: #2c2c2c;
         }
 
-        body { margin: 0; background: #e5e5db; font-family: 'Tenor Sans', sans-serif; }
-        .wrapper { max-width: 480px; margin: 0 auto; background: var(--blanco); position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.1); }
+        body {
+            margin: 0;
+            background-color: #e5e5db;
+            font-family: 'Tenor Sans', sans-serif;
+            color: var(--oscuro);
+        }
 
-        /* REPRODUCTOR DE MÚSICA PREMIUM */
-        #music-control {
+        .main-wrapper {
+            max-width: 450px;
+            margin: 0 auto;
+            background-color: var(--crema);
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* --- REPRODUCTOR DE MÚSICA --- */
+        #music-container {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            width: 45px;
-            height: 45px;
-            border: 1px solid var(--negro);
-            border-radius: 50%;
+            top: 25px;
+            right: 25px;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 50px;
+            border: 1px solid var(--dorado);
             display: flex;
             align-items: center;
-            justify-content: center;
             cursor: pointer;
-            background: rgba(255,255,255,0.8);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        .playing { animation: rotate 4s linear infinite; }
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .music-text { font-size: 9px; letter-spacing: 1px; margin-right: 8px; color: var(--dorado); }
 
-        /* SECCIÓN HERO */
-        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-img { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5)), 
+        /* --- SECCIONES --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            color: white;
+            padding-bottom: 60px;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* FOTO PRINCIPAL: Novios abrazados de frente */
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000');
-            background-size: cover; background-position: center; z-index: 1;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
         }
-        .hero-content { z-index: 2; color: white; text-align: center; text-transform: uppercase; letter-spacing: 5px; }
 
-        /* CONTADOR */
-        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 40px 0; }
-        .t-num { font-size: 1.5rem; display: block; }
-        .t-lab { font-size: 0.6rem; text-transform: uppercase; opacity: 0.6; }
+        .hero-content { z-index: 2; text-transform: uppercase; letter-spacing: 4px; }
+        .hero-content h1 { font-size: 2.5rem; margin: 15px 0; font-weight: normal; }
 
-        section { padding: 80px 40px; text-align: center; }
+        section { padding: 80px 35px; text-align: center; }
+
         .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.8rem; }
-        .btn { display: inline-block; padding: 18px 40px; background: var(--negro); color: white; text-decoration: none; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 30px; }
-        
-        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 40px 0; }
-        .g-img { width: 100%; height: 250px; object-fit: cover; }
+
+        /* --- CONTADOR --- */
+        .timer-box {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 40px 0;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .timer-val { font-size: 1.4rem; color: var(--dorado); display: block; }
+        .timer-lab { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- FOTOS --- */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        .img-item { width: 100%; height: 260px; object-fit: cover; border-radius: 2px; }
+
+        .btn-gold {
+            display: inline-block;
+            padding: 16px 35px;
+            background: none;
+            border: 1px solid var(--dorado);
+            color: var(--dorado);
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .btn-gold:hover { background: var(--dorado); color: white; }
+
+        .footer-img {
+            width: 100%;
+            height: 350px;
+            /* FOTO DE CIERRE: Novios juntos */
+            background: url('https://images.unsplash.com/photo-1591604466107-dd9ba6ba1143?q=80&w=800') center/cover;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
 
-    <div id="music-control" onclick="toggleMusic()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    <div id="music-container" onclick="handleMusic()">
+        <span class="music-text" id="status-text">PLAY MÚSICA</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
     </div>
-    
-    <audio id="bg-audio" loop preload="auto">
-        <source src="https://docs.google.com/uc?export=download&id=1gllCs_V2LXOL5LDhRRIRWeuZv68TEK5R" type="audio/mpeg">
+
+    <audio id="weddingAudio" loop>
+        <source src="https://docs.google.com/uc?export=open&id=1gllCs_V2LXOL5LDhRRIRWeuZv68TEK5R" type="audio/mpeg">
     </audio>
 
-    <div class="wrapper">
+    <div class="main-wrapper">
+        
         <div class="hero">
-            <div class="hero-img"></div>
+            <div class="hero-image"></div>
             <div class="hero-content">
+                <p style="font-size: 0.7rem;">Nuestra Boda</p>
                 <h1>ANA & CARLOS</h1>
-                <p style="font-size: 0.8rem;">14 . 02 . 2026</p>
+                <p style="font-size: 0.8rem; letter-spacing: 6px;">14 . 02 . 2026</p>
             </div>
         </div>
 
         <section>
-            <p class="serif">"Nuestra historia es el viaje más hermoso de nuestras vidas."</p>
-            <div class="gallery">
-                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600" class="g-img">
-                <img src="https://images.unsplash.com/photo-1596193711019-21c61ae33e50?q=80&w=600" class="g-img" style="margin-top: 30px;">
+            <p class="serif">"Caminaremos juntos, siempre de la mano."</p>
+            <p style="font-size: 0.9rem; line-height: 1.8; margin-top: 25px; color: #666;">
+                Después de compartir momentos inolvidables, hemos decidido unir nuestras vidas para siempre. 
+                Queremos que seas parte de este nuevo comienzo.
+            </p>
+            <div class="gallery-container">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600" class="img-item">
+                <img src="https://images.unsplash.com/photo-1596193711019-21c61ae33e50?q=80&w=600" class="img-item" style="margin-top: 40px;">
             </div>
         </section>
 
-        <section style="background: #f9f8f5;">
-            <p style="letter-spacing: 3px; font-size: 0.7rem;">COMIENZA EN</p>
-            <div class="timer-grid">
-                <div><span class="t-num" id="d">00</span><span class="t-lab">Días</span></div>
-                <div><span class="t-num" id="h">00</span><span class="t-lab">Hrs</span></div>
-                <div><span class="t-num" id="m">00</span><span class="t-lab">Min</span></div>
-                <div><span class="t-num" id="s">00</span><span class="t-lab">Seg</span></div>
+        <section style="background-color: #f9f8f5;">
+            <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem;">Solo faltan</p>
+            <div class="timer-box">
+                <div><span class="timer-val" id="days">00</span><span class="timer-lab">Días</span></div>
+                <div><span class="timer-val" id="hours">00</span><span class="timer-lab">Hrs</span></div>
+                <div><span class="timer-val" id="mins">00</span><span class="timer-lab">Min</span></div>
+                <div><span class="timer-val" id="secs">00</span><span class="timer-lab">Seg</span></div>
             </div>
             
-            <div style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 30px 0; margin-top: 40px;">
-                <p class="serif">Sábado 14 de Febrero</p>
-                <p>Catedral de Tunkás, Yucatán</p>
-                <a href="#" class="btn" style="background: none; color: black; border: 1px solid black;">Ver Ubicación</a>
+            <p class="serif" style="margin-top: 50px;">Sábado 14 de Febrero</p>
+            <p><strong>Ceremonia:</strong> 18:00 HRS<br>Parroquia de San Francisco</p>
+            <a href="#" class="btn-gold">Ubicación Google Maps</a>
+
+            <div style="margin-top: 60px;">
+                <p class="serif">La Recepción</p>
+                <p><strong>Cena y Baile:</strong> 20:30 HRS<br>Hacienda del Valle</p>
+                <a href="#" class="btn-gold">Cómo llegar</a>
             </div>
         </section>
 
         <section>
-            <p class="serif">¿Nos acompañas?</p>
-            <p style="font-size: 0.8rem; margin-top: 10px;">Favor de confirmar antes del 15 de Enero</p>
-            <a href="https://wa.me/521234567890" class="btn">Confirmar Asistencia</a>
+            <p class="serif">Tu presencia es nuestro mejor regalo</p>
+            <p style="font-size: 0.8rem; margin-top: 15px;">Favor de confirmar antes del 15 de Enero</p>
+            <a href="https://wa.me/521234567890" class="btn-gold" style="background-color: var(--oscuro); color: white; border: none;">Confirmar por WhatsApp</a>
             
-            <div style="height: 300px; background: url('https://images.unsplash.com/photo-1591604466107-dd9ba6ba1143?q=80&w=800') center/cover; margin-top: 80px;"></div>
+            <div class="footer-img"></div>
+            <p class="serif" style="margin-top: 60px;">¡Te esperamos!</p>
         </section>
+
     </div>
 
     <script>
-        // LÓGICA DE MÚSICA
-        function toggleMusic() {
-            const audio = document.getElementById('bg-audio');
-            const btn = document.getElementById('music-control');
+        // MÚSICA: El navegador requiere un clic del usuario para sonar
+        function handleMusic() {
+            const audio = document.getElementById('weddingAudio');
+            const status = document.getElementById('status-text');
             if (audio.paused) {
                 audio.play();
-                btn.classList.add('playing');
+                status.innerText = "PAUSAR MÚSICA";
             } else {
                 audio.pause();
-                btn.classList.remove('playing');
+                status.innerText = "PLAY MÚSICA";
             }
         }
 
-        // LÓGICA DE CONTADOR
-        const target = new Date(2026, 1, 14, 18, 0, 0).getTime();
+        // CONTADOR DINÁMICO
+        const targetDate = new Date(2026, 1, 14, 18, 0, 0).getTime();
+        
         setInterval(() => {
             const now = new Date().getTime();
-            const dist = target - now;
-            document.getElementById('d').innerHTML = Math.floor(dist / 864e5);
-            document.getElementById('h').innerHTML = Math.floor((dist % 864e5) / 36e5);
-            document.getElementById('m').innerHTML = Math.floor((dist % 36e5) / 6e4);
-            document.getElementById('s').innerHTML = Math.floor((dist % 6e4) / 1000);
+            const diff = targetDate - now;
+
+            document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000);
         }, 1000);
     </script>
 </body>

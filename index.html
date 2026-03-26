@@ -18,18 +18,24 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center;
         }
 
-        /* PORTADA CON TEXTO */
-        .hero { position: relative; height: 100vh; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000') center/cover; z-index: 1; }
+        /* PORTADA CON TEXTO Y FOTO DE DROPBOX */
+        .hero { position: relative; height: 100vh; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+        .hero-bg { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            /* Filtro oscuro para resaltar nombres */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
+            url('https://www.dropbox.com/scl/fi/nyu3ho1a881zzq25aptyz/novios-de-frente.png?rlkey=dfo2w3jv4gmoktfz2vv14plvc&raw=1') center/cover; 
+            z-index: 1; 
+        }
         .hero-text { z-index: 2; text-transform: uppercase; letter-spacing: 5px; }
-        .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin: 10px 0; font-weight: normal; }
+        .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin: 15px 0; font-weight: normal; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
         section { padding: 80px 30px; text-align: center; }
         .img-full { width: 100%; display: block; object-fit: cover; }
         .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2rem; margin-bottom: 20px; }
         .historia-texto { font-size: 0.95rem; line-height: 1.8; color: #555; font-style: italic; margin-bottom: 30px; }
         
-        /* CONTADOR */
+        /* CONTADOR REPARADO */
         .timer-container { display: flex; justify-content: center; gap: 15px; margin: 30px 0; padding: 25px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
         .t-block { text-align: center; min-width: 60px; }
         .t-val { display: block; font-size: 1.5rem; color: var(--dorado); font-weight: bold; }
@@ -38,8 +44,9 @@
         .btn-maps {
             display: inline-block; padding: 15px 30px; border: 1px solid var(--dorado);
             color: var(--dorado); text-decoration: none; font-size: 0.7rem;
-            letter-spacing: 2px; text-transform: uppercase; margin-top: 15px;
+            letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; transition: 0.3s;
         }
+        .btn-maps:hover { background: var(--dorado); color: white; }
     </style>
 </head>
 <body onclick="iniciarMusicaAlPrimerClic()">
@@ -58,10 +65,10 @@
         <div class="hero">
             <div class="hero-bg"></div>
             <div class="hero-text">
-                <p style="font-size: 0.8rem;">NUESTRA BODA</p>
+                <p style="font-size: 0.8rem; letter-spacing: 4px;">NUESTRA BODA</p>
                 <h1>ANA & CARLOS</h1>
-                <div style="width: 40px; height: 1px; background: white; margin: 20px auto;"></div>
-                <p style="font-size: 0.9rem; letter-spacing: 3px;">14 . 02 . 2026</p>
+                <div style="width: 50px; height: 1px; background: white; margin: 20px auto; opacity: 0.8;"></div>
+                <p style="font-size: 0.9rem; letter-spacing: 3px;">14 . FEBRERO . 2026</p>
             </div>
         </div>
 
@@ -73,7 +80,7 @@
             </p>
             <img src="https://www.dropbox.com/scl/fi/yxcamxu6ark6qj5jf9da1/novios-corriendo.jpg?rlkey=wt1aapl5nh89afj7n53zou3qt&raw=1" class="img-full" style="height: 350px; border-radius: 5px; margin-bottom: 30px;">
             
-            <p class="serif" style="font-size: 1.5rem;">Nuestro lugar mágico</p>
+            <p class="serif" style="font-size: 1.5rem;">"Nuestro viaje apenas comienza y no importa a dónde nos lleve la vida, mientras sea de tu mano. Cada rincón del mundo es mágico si estoy junto a ti, porque mi verdadero hogar eres tú."</p>
             <img src="https://www.dropbox.com/scl/fi/snutqjlkrv7oglqswicq2/novios-besandoce.jpg?rlkey=ad7z44z08wgr0f4wcd20et7nz&raw=1" class="img-full" style="height: 350px; border-radius: 5px;">
         </section>
 
@@ -147,7 +154,7 @@
             }
         }
         
-        // Ejecutar inmediatamente y luego cada segundo
+        // Ejecutar inmediatamente al cargar la página
         actualizarContador();
         setInterval(actualizarContador, 1000);
     </script>

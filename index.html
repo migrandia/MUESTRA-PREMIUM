@@ -10,57 +10,31 @@
         body { margin: 0; background: #eee; font-family: 'Tenor Sans', sans-serif; overflow-x: hidden; }
         .wrapper { max-width: 480px; margin: 0 auto; background: var(--crema); position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.2); }
         
-        /* ESTILO PARA LAS FLORES EDITABLES */
-        .flor-editable {
-            position: absolute;
-            width: 120px; /* Puedes cambiar el tamaño aquí */
-            z-index: 10;
-            pointer-events: none;
-            opacity: 0.6; /* Transparencia para que se vea elegante */
-        }
+        /* ESTILO PARA ADORNOS */
+        .adorno-esquina { position: absolute; width: 140px; z-index: 10; pointer-events: none; opacity: 0.5; filter: sepia(0.5); }
+        .separador-floral { width: 100px; margin: 25px auto; display: block; opacity: 0.4; filter: sepia(0.5); }
 
-        .separador-floral-editable {
-            width: 80px; /* Tamaño del separador entre secciones */
-            margin: 20px auto;
-            display: block;
-            opacity: 0.5;
-        }
-
-        /* REPRODUCTOR FLOTANTE */
-        #music-box {
-            position: fixed; top: 20px; right: 20px; z-index: 1000;
-            background: white; border: 1px solid var(--dorado);
-            padding: 10px 18px; border-radius: 50px; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center;
-        }
+        /* REPRODUCTOR */
+        #music-box { position: fixed; top: 20px; right: 20px; z-index: 1000; background: white; border: 1px solid var(--dorado); padding: 10px 18px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
         /* PORTADA */
         .hero { position: relative; height: 100vh; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
-        .hero-bg { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
-            url('https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1') center/cover; 
-            z-index: 1; 
-        }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1') center/cover; z-index: 1; }
         .hero-text { z-index: 2; text-transform: uppercase; letter-spacing: 5px; }
-        .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin: 15px 0; font-weight: normal; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin: 15px 0; font-weight: normal; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); }
 
         section { padding: 60px 30px; text-align: center; position: relative; }
-        .img-full { width: 100%; display: block; object-fit: cover; border-radius: 5px; }
-        .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.6rem; margin-bottom: 20px; line-height: 1.4; }
-        .historia-texto { font-size: 0.95rem; line-height: 1.8; color: #555; font-style: italic; margin-bottom: 30px; }
+        .img-full { width: 100%; display: block; object-fit: cover; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.6rem; margin-bottom: 20px; line-height: 1.4; color: #444; }
+        .historia-texto { font-size: 0.95rem; line-height: 1.8; color: #666; font-style: italic; margin-bottom: 30px; }
         
         /* CONTADOR */
-        .timer-container { display: flex; justify-content: center; gap: 15px; margin: 20px 0; padding: 25px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
-        .t-block { text-align: center; min-width: 60px; }
+        .timer-container { display: flex; justify-content: center; gap: 15px; margin: 20px 0; padding: 25px 0; border-top: 1px solid #f2ede4; border-bottom: 1px solid #f2ede4; }
         .t-val { display: block; font-size: 1.5rem; color: var(--dorado); font-weight: bold; }
-        .t-lab { font-size: 0.6rem; text-transform: uppercase; opacity: 0.7; }
+        .t-lab { font-size: 0.6rem; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px; }
 
-        .btn-maps {
-            display: inline-block; padding: 15px 30px; border: 1px solid var(--dorado);
-            color: var(--dorado); text-decoration: none; font-size: 0.7rem;
-            letter-spacing: 2px; text-transform: uppercase; margin-top: 15px;
-        }
+        .btn-maps { display: inline-block; padding: 15px 30px; border: 1px solid var(--dorado); color: var(--dorado); text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; border-radius: 2px; transition: 0.3s; }
+        .btn-maps:hover { background: var(--dorado); color: white; }
     </style>
 </head>
 <body onclick="iniciarMusicaAlPrimerClic()">
@@ -76,7 +50,7 @@
 
     <div class="wrapper">
         
-        <img src="https://www.transparentpng.com/download/gold-floral/P9pY8v-gold-floral-transparent-image.png" class="flor-editable" style="top: -10px; left: -10px;">
+        <img src="https://www.transparentpng.com/download/gold-floral/gold-floral-free-download-7.png" class="adorno-esquina" style="top: -15px; left: -15px;">
 
         <div class="hero">
             <div class="hero-bg"></div>
@@ -92,27 +66,27 @@
             <p style="font-size: 0.7rem; letter-spacing: 4px; color: var(--dorado); margin-bottom: 10px;">NUESTRA HISTORIA</p>
             <p class="serif">Como en un sueño...</p>
             <p class="historia-texto">
-                "Todo comenzó con una mirada y una sonrisa que cambió nuestro destino. Descubrimos que la vida es mucho más bella cuando se camina de la mano. Hoy, con el corazón lleno de gratitud, decidimos ser uno solo para siempre."
+                "Todo comenzó con una mirada y una sonrisa que cambió nuestro destino. Descubrimos que la vida es mucho más bella cuando se camina de la mano."
             </p>
-            <img src="https://www.dropbox.com/scl/fi/yxcamxu6ark6qj5jf9da1/novios-corriendo.jpg?rlkey=wt1aapl5nh89afj7n53zou3qt&raw=1" class="img-full" style="height: 350px;">
+            <img src="https://www.dropbox.com/scl/fi/yxcamxu6ark6qj5jf9da1/novios-corriendo.jpg?rlkey=wt1aapl5nh89afj7n53zou3qt&raw=1" class="img-full" style="height: 380px;">
             
-            <img src="https://www.transparentpng.com/download/gold-floral/P9pY8v-gold-floral-transparent-image.png" class="separador-floral-editable">
+            <img src="https://www.transparentpng.com/download/gold-floral/gold-floral-free-download-7.png" class="separador-floral">
             
-            <p class="serif">"Nuestro viaje apenas comienza y no importa a dónde nos lleve la vida, mientras sea de tu mano. Cada rincón del mundo es mágico si estoy junto a ti, porque mi verdadero hogar eres tú."</p>
-            <img src="https://www.dropbox.com/scl/fi/snutqjlkrv7oglqswicq2/novios-besandoce.jpg?rlkey=ad7z44z08wgr0f4wcd20et7nz&raw=1" class="img-full" style="height: 350px;">
+            <p class="serif">"Nuestro viaje apenas comienza y no importa a dónde nos lleve la vida, mientras sea de tu mano..."</p>
+            <img src="https://www.dropbox.com/scl/fi/snutqjlkrv7oglqswicq2/novios-besandoce.jpg?rlkey=ad7z44z08wgr0f4wcd20et7nz&raw=1" class="img-full" style="height: 380px;">
         </section>
 
         <section style="background-color: #fcfcfc;">
             <p class="serif">La Ceremonia</p>
             <p><strong>Parroquia de Santo Tomas Apostol</strong><br>Tunkás, Yucatán</p>
-            <p style="font-size: 0.9rem; margin-top: 10px;">18:00 Horas</p>
-            <a href="https://www.google.com/maps/place/Parroquia+de+Santo+Tom%C3%A1s+de+Ap%C3%B3stol" target="_blank" class="btn-maps">Ver mapa</a>
+            <p style="font-size: 0.9rem; margin-top: 10px; color: #888;">18:00 Horas</p>
+            <a href="https://www.google.com/maps/place/Parroquia+de+Santo+Tom%C3%A1s+de+Ap%C3%B3stol" target="_blank" class="btn-maps">Ver ubicación</a>
         </section>
 
         <section>
-            <img src="https://www.transparentpng.com/download/gold-floral/P9pY8v-gold-floral-transparent-image.png" class="separador-floral-editable" style="transform: rotate(180deg);">
+            <img src="https://www.transparentpng.com/download/gold-floral/gold-floral-free-download-7.png" class="separador-floral" style="transform: rotate(180deg);">
             
-            <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--dorado);">CUENTA REGRESIVA</p>
+            <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--dorado);">FALTAN POCOS DÍAS</p>
             <div class="timer-container">
                 <div class="t-block"><span class="t-val" id="d">00</span><span class="t-lab">Días</span></div>
                 <div class="t-block"><span class="t-val" id="h">00</span><span class="t-lab">Hrs</span></div>
@@ -124,42 +98,37 @@
         <section style="background-color: #f9f8f5;">
             <p class="serif">La Recepción</p>
             <p><strong>Villa Lucila</strong><br>Calle 34, Tunkás</p>
-            <p style="font-size: 0.9rem; margin-top: 10px;">20:30 Horas</p>
-            <a href="https://www.google.com/maps/place/VILLA+LUCILA" target="_blank" class="btn-maps">Ver mapa</a>
+            <p style="font-size: 0.9rem; margin-top: 10px; color: #888;">20:30 Horas</p>
+            <a href="https://www.google.com/maps/place/VILLA+LUCILA" target="_blank" class="btn-maps">Ver ubicación</a>
         </section>
 
         <div style="position: relative; overflow: hidden;">
-            <img src="https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1" class="img-full">
+            <img src="https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1" class="img-full" style="border-radius: 0;">
             
-            <img src="https://www.transparentpng.com/download/gold-floral/P9pY8v-gold-floral-transparent-image.png" class="flor-editable" style="bottom: -10px; right: -10px; transform: rotate(180deg);">
+            <img src="https://www.transparentpng.com/download/gold-floral/gold-floral-free-download-7.png" class="adorno-esquina" style="bottom: -15px; right: -15px; transform: rotate(180deg);">
         </div>
         
-        <section>
-            <p class="serif" style="font-size: 1.5rem;">¡Te esperamos!</p>
-            <a href="https://wa.me/525654252153" target="_blank" class="btn-maps" style="background: var(--oscuro); color: white; border: none; width: 80%;">Confirmar Asistencia</a>
+        <section style="padding: 80px 30px;">
+            <p class="serif" style="font-size: 1.5rem; margin-bottom: 30px;">¡Nos encantaría compartir este día contigo!</p>
+            <a href="https://wa.me/525654252153" target="_blank" class="btn-maps" style="background: var(--oscuro); color: white; border: none; width: 85%; font-weight: bold;">Confirmar Asistencia</a>
         </section>
     </div>
 
     <script>
         var musicaIniciada = false;
-        function iniciarMusicaAlPrimerClic() {
-            if (!musicaIniciada) {
-                toggleMusic();
-                musicaIniciada = true;
-            }
-        }
+        function iniciarMusicaAlPrimerClic() { if (!musicaIniciada) { toggleMusic(); musicaIniciada = true; } }
         function toggleMusic() {
             var audio = document.getElementById('cancion');
             var icon = document.getElementById('m-icon');
             var txt = document.getElementById('m-text');
-            if (audio.paused) {
-                audio.play().catch(e => console.log("Esperando..."));
-                icon.innerHTML = "⏸";
-                txt.innerHTML = "PAUSAR";
-            } else {
-                audio.pause();
-                icon.innerHTML = "▶";
-                txt.innerHTML = "MUSICA";
+            if (audio.paused) { 
+                audio.play().catch(e => console.log("Audio en espera...")); 
+                icon.innerHTML = "⏸"; 
+                txt.innerHTML = "PAUSAR"; 
+            } else { 
+                audio.pause(); 
+                icon.innerHTML = "▶"; 
+                txt.innerHTML = "MUSICA"; 
             }
         }
         function actualizarContador() {

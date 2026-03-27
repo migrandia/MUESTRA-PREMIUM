@@ -8,11 +8,10 @@
     
     <script>
         // ==========================================
-        // CONFIGURA AQUÍ TUS ADORNOS (Links de Dropbox con &raw=1)
+        // CONFIGURACIÓN DE IMÁGENES
         // ==========================================
         const URL_FLOR_ESQUINA_SUPERIOR = "https://www.dropbox.com/scl/fi/vq8tw8atriefphspohwzn/flor-arriba.png?rlkey=mms5pql7v1wya32p2mj1qkadu&raw=1";
-        const URL_FLOR_SEPARADOR_1      = "https://www.dropbox.com/scl/fi/i2pdlc7p4rhtyj2u9sz1i/flor-centro.png?rlkey=51q6xzoum0ioywybcrevhz6rm&raw=1";
-        const URL_FLOR_SEPARADOR_2      = "https://www.dropbox.com/scl/fi/i2pdlc7p4rhtyj2u9sz1i/flor-centro.png?rlkey=51q6xzoum0ioywybcrevhz6rm&raw=1";
+        const URL_FLOR_SEPARADOR         = "https://www.dropbox.com/scl/fi/i2pdlc7p4rhtyj2u9sz1i/flor-centro.png?rlkey=51q6xzoum0ioywybcrevhz6rm&raw=1";
         const URL_FLOR_ESQUINA_INFERIOR = "https://www.dropbox.com/scl/fi/ufnfth79jsg6d6gxv1b92/flor-abajo.png?rlkey=mkt5wkbfzuc0ox8mpww51e5ca&raw=1";
     </script>
 
@@ -21,11 +20,20 @@
         body { margin: 0; background: #eee; font-family: 'Tenor Sans', sans-serif; overflow-x: hidden; }
         .wrapper { max-width: 480px; margin: 0 auto; background: var(--crema); position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.2); }
         
-        /* ESTILO PARA LOS ADORNOS */
-        .adorno { position: absolute; z-index: 10; pointer-events: none; opacity: 0.6; width: 130px; }
-        .separador { display: block; margin: 30px auto; width: 80px; opacity: 0.5; }
+        /* ESTILO PARA LOS ADORNOS CORREGIDO */
+        .adorno { 
+            position: absolute; 
+            z-index: 10; 
+            pointer-events: none; 
+            width: 180px; /* Aumenté el tamaño para que luzcan */
+        }
+        .separador { 
+            display: block; 
+            margin: 20px auto; 
+            width: 120px; /* Tamaño del separador central */
+            opacity: 0.8; 
+        }
 
-        /* REPRODUCTOR FLOTANTE */
         #music-box {
             position: fixed; top: 20px; right: 20px; z-index: 1000;
             background: white; border: 1px solid var(--dorado);
@@ -33,7 +41,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center;
         }
 
-        /* PORTADA */
         .hero { position: relative; height: 100vh; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
         .hero-bg { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
@@ -42,25 +49,22 @@
             z-index: 1; 
         }
         .hero-text { z-index: 2; text-transform: uppercase; letter-spacing: 5px; }
-        .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin: 15px 0; font-weight: normal; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin: 15px 0; font-weight: normal; }
 
-        section { padding: 80px 30px; text-align: center; position: relative; }
+        section { padding: 60px 30px; text-align: center; position: relative; }
         .img-full { width: 100%; display: block; object-fit: cover; border-radius: 5px; }
         .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2rem; margin-bottom: 20px; }
         .historia-texto { font-size: 0.95rem; line-height: 1.8; color: #555; font-style: italic; margin-bottom: 30px; }
         
-        /* CONTADOR */
         .timer-container { display: flex; justify-content: center; gap: 15px; margin: 30px 0; padding: 25px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
-        .t-block { text-align: center; min-width: 60px; }
         .t-val { display: block; font-size: 1.5rem; color: var(--dorado); font-weight: bold; }
         .t-lab { font-size: 0.6rem; text-transform: uppercase; opacity: 0.7; }
 
         .btn-maps {
             display: inline-block; padding: 15px 30px; border: 1px solid var(--dorado);
             color: var(--dorado); text-decoration: none; font-size: 0.7rem;
-            letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; transition: 0.3s;
+            letter-spacing: 2px; text-transform: uppercase; margin-top: 15px;
         }
-        .btn-maps:hover { background: var(--dorado); color: white; }
     </style>
 </head>
 <body onclick="iniciarMusicaAlPrimerClic()">
@@ -76,7 +80,7 @@
 
     <div class="wrapper">
         
-        <script>document.write(`<img src="${URL_FLOR_ESQUINA_SUPERIOR}" class="adorno" style="top:-10px; left:-10px;">`);</script>
+        <script>document.write(`<img src="${URL_FLOR_ESQUINA_SUPERIOR}" class="adorno" style="top:0; left:0;">`);</script>
 
         <div class="hero">
             <div class="hero-bg"></div>
@@ -94,9 +98,9 @@
             <p class="historia-texto">
                 "Todo comenzó con una mirada y una sonrisa que cambió nuestro destino. Descubrimos que la vida es mucho más bella cuando se camina de la mano. Hoy, con el corazón lleno de gratitud, decidimos ser uno solo para siempre."
             </p>
-            <img src="https://www.dropbox.com/scl/fi/yxcamxu6ark6qj5jf9da1/novios-corriendo.jpg?rlkey=wt1aapl5nh89afj7n53zou3qt&raw=1" class="img-full" style="height: 350px; margin-bottom: 30px;">
+            <img src="https://www.dropbox.com/scl/fi/yxcamxu6ark6qj5jf9da1/novios-corriendo.jpg?rlkey=wt1aapl5nh89afj7n53zou3qt&raw=1" class="img-full" style="height: 350px;">
             
-            <script>document.write(`<img src="${https://www.dropbox.com/scl/fi/i2pdlc7p4rhtyj2u9sz1i/flor-centro.png?rlkey=51q6xzoum0ioywybcrevhz6rm&raw=1}" class="separador">`);</script>
+            <script>document.write(`<img src="${URL_FLOR_SEPARADOR}" class="separador">`);</script>
             
             <p class="serif" style="font-size: 1.5rem;">"Nuestro viaje apenas comienza y no importa a dónde nos lleve la vida, mientras sea de tu mano. Cada rincón del mundo es mágico si estoy junto a ti, porque mi verdadero hogar eres tú."</p>
             <img src="https://www.dropbox.com/scl/fi/snutqjlkrv7oglqswicq2/novios-besandoce.jpg?rlkey=ad7z44z08wgr0f4wcd20et7nz&raw=1" class="img-full" style="height: 350px;">
@@ -106,11 +110,11 @@
             <p class="serif">La Ceremonia</p>
             <p><strong>Parroquia de Santo Tomas Apostol</strong><br>Tunkás, Yucatán</p>
             <p style="font-size: 0.9rem; margin-top: 10px;">18:00 Horas</p>
-            <a href="https://maps.app.goo.gl/K9JjX8X8X8X8X8" target="_blank" class="btn-maps">Ver mapa</a>
+            <a href="https://maps.app.goo.gl/9" target="_blank" class="btn-maps">Ver mapa</a>
         </section>
 
         <section>
-            <script>document.write(`<img src="${https://www.dropbox.com/scl/fi/i2pdlc7p4rhtyj2u9sz1i/flor-centro.png?rlkey=51q6xzoum0ioywybcrevhz6rm&raw=1}" class="separador" style="transform:rotate(180deg)">`);</script>
+            <script>document.write(`<img src="${URL_FLOR_SEPARADOR}" class="separador" style="transform:rotate(180deg)">`);</script>
             
             <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--dorado);">CUENTA REGRESIVA</p>
             <div class="timer-container">
@@ -125,13 +129,13 @@
             <p class="serif">La Recepción</p>
             <p><strong>Villa Lucila</strong><br>Calle 34, Tunkás</p>
             <p style="font-size: 0.9rem; margin-top: 10px;">20:30 Horas</p>
-            <a href="https://maps.app.goo.gl/L10J10J10J10J10" target="_blank" class="btn-maps">Ver mapa</a>
+            <a href="https://maps.app.goo.gl/9" target="_blank" class="btn-maps">Ver mapa</a>
         </section>
 
         <div style="position: relative; overflow: hidden;">
             <img src="https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1" class="img-full" style="border-radius: 0;">
             
-            <script>document.write(`<img src="${https://www.dropbox.com/scl/fi/ufnfth79jsg6d6gxv1b92/flor-abajo.png?rlkey=mkt5wkbfzuc0ox8mpww51e5ca&raw=1}" class="adorno" style="bottom:-10px; right:-10px; transform:rotate(180deg)">`);</script>
+            <script>document.write(`<img src="${URL_FLOR_ESQUINA_INFERIOR}" class="adorno" style="bottom:0; right:0;">`);</script>
         </div>
         
         <section>
@@ -148,8 +152,7 @@
             var icon = document.getElementById('m-icon');
             var txt = document.getElementById('m-text');
             if (audio.paused) { 
-                audio.play().catch(e => console.log("Audio en espera...")); 
-                icon.innerHTML = "⏸"; txt.innerHTML = "PAUSAR"; 
+                audio.play(); icon.innerHTML = "⏸"; txt.innerHTML = "PAUSAR"; 
             } else { 
                 audio.pause(); icon.innerHTML = "▶"; txt.innerHTML = "MUSICA"; 
             }
